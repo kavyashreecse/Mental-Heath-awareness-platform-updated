@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import Landing from './pages/Landing';
@@ -29,7 +29,7 @@ function PrivateRoute({ children }) {
 export default function App() {
   return (
     <AuthProvider>
-      <BrowserRouter>
+      <HashRouter>
         <Toaster position="top-right" toastOptions={{ style: { background: '#1e1b4b', color: '#e2e8f0', border: '1px solid rgba(255,255,255,0.1)' } }} />
         <Routes>
           <Route path="/" element={<Landing />} />
@@ -39,7 +39,7 @@ export default function App() {
             <Route index element={<Dashboard />} />
             <Route path="mood" element={<MoodTracker />} />
             <Route path="chat" element={<ChatInterface />} />
-            <Route path="insights" element={<InsightsPage />} />
+            <Route path="/insights" element={<InsightsPage />} />
             <Route path="tools" element={<MicroTools />} />
             <Route path="journal" element={<Journal />} />
             <Route path="habits" element={<HabitTracker />} />
@@ -48,7 +48,7 @@ export default function App() {
             <Route path="games" element={<Games />} />
           </Route>
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </AuthProvider>
   );
 }
